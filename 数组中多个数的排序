@@ -15,7 +15,7 @@ int change(int* a,int* b)//交换两个数的顺序
 	return 0;
 }
 
-int paixu1(int i, int* arr)//多个数从大到小排序
+int paixu2(int i, int* arr)//多个数从大到小排序
 {
 	int m,n;
 	for (m=0;m<i;m++)
@@ -37,7 +37,7 @@ int main()
 	{
 		;
 	}
-	paixu1 (i, &arr[0]);
+	paixu2 (i, &arr[0]);
 	for (n = 0; n < i;n++) //打印循环
 	{
 		printf("%d ", arr[n]);
