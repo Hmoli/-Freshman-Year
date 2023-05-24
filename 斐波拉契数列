@@ -29,19 +29,39 @@ int Fibonacci1(int n)
 		return (fibonacci[n-1]);
 	}
 }
+
+int Fibonacci3(int q)
+{
+	int a, b, c, m;
+	a = 1; b = 1; c = 0;
+	if (q < 3)return 1;
+	else
+	{
+		for(m=2;m<q;m++)
+		{
+			c = a + b;
+			a = b;
+			b = c;
+		}
+	}
+	return (c);
+}
 int main()
 {
 	int n = 0;
 	int f = 0;
 	int F = 0;
+	int fi = 0;
 	scanf_s("%d", &n);
 	if (n < 1)printf("数据错误");
 	else
 	{
 		f = Fibonacci1(n);
+		printf("f=%d\n", f);
 		F = Fibonacci2(n);
+		printf("F=%d\n", F);
+		fi = Fibonacci3(n);
+		printf("fi=%d\n", fi);
 	}
-	printf("f=%d\n", f);
-	printf("F=%d\n", F);
 	printf("count=%d\n", count);
 }
