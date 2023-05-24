@@ -1,0 +1,39 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+
+int change(int* a,int* b)
+{
+	int x = *a;
+	int y = *b;
+	{
+		x = x + y;
+		y = x - y;
+		x = x - y; 
+	}
+	*a = x;
+	*b = y;
+	return 0;
+}
+
+int paixu1(int* x, int* y, int* z)//三个数从大到小排序
+{
+	int change(int* a, int* b);
+	int* a = x;
+	int* b = y;
+	int* c = z;
+	if (*a < *b)
+		change(a, b);
+	if (*b < *c)
+		change(b, c);
+	if (*a < *b)
+		change(a, b);
+	return 0;
+}
+
+int main()
+{
+	int a, b, c;
+	scanf_s("%d %d %d", &a, &b, &c);
+	paixu1(&a, &b, &c);
+	printf("%d %d %d", a, b, c);
+}
