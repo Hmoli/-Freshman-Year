@@ -1,7 +1,12 @@
 #include <stdio.h>
+#include <time.h>
+
+int count = 0;//用于计数
 
 int Fibonacci2(int m)
 {
+	if (3 == m) count++;//统计第三个斐波拉契数的出现次数
+
 	if (m < 3)
 		return 1;
 	else
@@ -10,6 +15,7 @@ int Fibonacci2(int m)
 
 int Fibonacci1(int n)
 {
+
 	int fibonacci[1000] = { 1,1 };
 	int i = 0;
 	int fi = 0;
@@ -36,5 +42,6 @@ int main()
 		F = Fibonacci2(n);
 	}
 	printf("f=%d\n", f);
-	printf("F=%d", F);
+	printf("F=%d\n", F);
+	printf("count=%d\n", count);
 }
