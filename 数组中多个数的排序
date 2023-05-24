@@ -1,0 +1,45 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+
+int change(int* a,int* b)//交换两个数的顺序
+{
+	int x = *a;
+	int y = *b;
+	{
+		x = x + y;
+		y = x - y;
+		x = x - y; 
+	}
+	*a = x;
+	*b = y;
+	return 0;
+}
+
+int paixu1(int i, int* arr)//多个数从大到小排序
+{
+	int m,n;
+	for (m=0;m<i;m++)
+	{
+		for (n = 0; n < i; n++)
+		{
+			if (*(arr+m) > *(arr+n))
+				change((arr + m), (arr + n));
+		}
+	}
+	return 0;
+}
+
+int main()
+{
+	int arr[100] = {0};
+	int i,n;
+	for (i = 0; scanf_s("%d", &arr[i]) != EOF; i++)//输入循环
+	{
+		;
+	}
+	paixu1 (i, &arr[0]);
+	for (n = 0; n < i;n++) //打印循环
+	{
+		printf("%d ", arr[n]);
+	}
+}
