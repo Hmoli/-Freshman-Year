@@ -1,0 +1,59 @@
+#include <stdio.h>
+
+int change(int* a, int* b)//交换两个数的顺序
+{
+	int x = *a;
+	int y = *b;
+	{
+		x = x + y;
+		y = x - y;
+		x = x - y;
+	}
+	*a = x;
+	*b = y;
+	return 0;
+}
+int paixu2(int maxsize, int* arr)//多个数从小到大排序
+{
+	int m, n;
+	for (m = 0; m < maxsize; m++)
+	{
+		for (n = m; n < maxsize; n++)
+			if (*(arr + m) > *(arr + n))
+				change((arr + m), (arr + n));
+	}
+	return 0;
+}
+
+int binsearch1(int aim, int* v, int n)
+{
+	int i = 0;
+	for(;*(v+i)<=aim && i<n ;i++)
+	{
+		if (*(v + i) == aim)return (i+1);
+	}
+	printf("未找到目标数");
+	return (aim-1);
+}
+
+
+int main()
+{
+	int arr[10000] = { 0 };
+	int i;
+	int n = 0;
+	int aim = 0;//要找的数
+	int t_aim = 0;//用于存放找到的目标数
+	for (i = 0; scanf_s("%d", &arr[i]) != EOF && i < 10000; i++) { ; }
+	printf("输入完成\n");
+	scanf_s("%d", &n);
+	scanf_s("%d", &aim);
+	paixu2(i, &arr);
+	for (i = 0; i < n; i++)
+	{
+		printf("%d\n", arr[i]);
+	}
+	t_aim = binsearch1(aim, &arr[0], n);
+	if (arr[t_aim - 1] == aim) printf("%d", t_aim);//检验找到的是否是要找的数
+}
+
