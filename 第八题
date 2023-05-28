@@ -1,0 +1,19 @@
+#include <stdio.h>
+int main()
+{
+	int week;
+	int day;
+	int speed = 250;
+	int work_day = 0;
+	int distance = 0;
+	scanf_s("%d %d", &week, &day);
+	for (; day > 0; day--,week++)
+	{
+		if (week > 7)
+			week -= 7;
+		if (week < 6)
+			work_day++;
+	}
+	distance = speed * work_day;
+	printf("%d", distance);
+}
