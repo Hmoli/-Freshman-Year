@@ -1,0 +1,117 @@
+#include <stdio.h>
+
+int main()
+{
+	char arr[16][16] = { { 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15 },{1},{2},{3},{4},{5},{6},{7},{8},{9},{10},{11},{12},{13},{14},{15} };
+	int chess = 0;
+	int n = 1, aim = 1;
+
+	for (; chess <= 225;) 
+	{
+
+		for (int i = 0; i < 16; i++)
+		{
+			for (int j = 0; j < 16; j++)
+			{
+				if (i < 10 && j>0)printf(" ");
+				if (i > 9 && j > 1)printf(" ");
+				if (arr[i][j] < 16) { printf("%d ", arr[i][j]); if (i > 0 && j >= 10)printf(" "); }
+				if (arr[i][j] > 16) { printf("%c ", arr[i][j]); if (i > 0 && j >= 10)printf(" "); }
+			}
+			printf("\n");
+		}
+
+		int black[2] = { 0 }, white[2] = { 0 };
+		printf("please black play chess");
+		scanf_s("%d %d", &black[0], &black[1]);
+		if (arr[black[0]][black[1]] == 0)arr[black[0]][black[1]] = 'b';
+		else
+		{
+			printf("该处已有棋子\n");
+			printf("please black play chess");
+			scanf_s("%d %d", &black[0], &black[1]);
+			if (arr[black[0]][black[1]] == 0)arr[black[0]][black[1]] = 'b';
+			else
+			{
+				printf("请遵守游戏规则\nwhite win"); return 0;
+			}
+		}
+
+		for (int i = 0; i < 16; i++)
+		{
+			for (int j = 0; j < 16; j++)
+			{
+				if (i < 10 && j>0)printf(" ");
+				if (i > 9 && j > 1)printf(" ");
+				if (arr[i][j] < 16) { printf("%d ", arr[i][j]); if (i > 0 && j >= 10)printf(" "); }
+				if (arr[i][j] > 16) { printf("%c ", arr[i][j]); if (i > 0 && j >= 10)printf(" "); }
+			}
+			printf("\n");
+		}
+
+		for (int i = 1; i < 16; i++)
+		{
+			for (int j = 1; j < 16; j++)
+				if (arr[i][j] == 'b')
+				{
+					for (n = 1, aim = 1; n == aim && j + n < 17 && n < 5; aim++)
+						if (arr[i][j + n] == 'b')n++;
+					if (n == aim){printf("black win"); return 0;}
+
+					for (n = 1, aim = 1; n == aim && j + n < 17 && n < 5; aim++)
+						if (arr[i + n][j] == 'b')n++;
+					if (n == aim) { printf("black win"); return 0; }
+
+					for (n = 1, aim = 1; n == aim && i + n < 17 && n < 5; aim++)
+						if (arr[i + n][j + n] == 'b')n++;
+					if (n == aim) { printf("black win"); return 0; }
+
+				}
+
+		}
+
+
+		chess++;
+		if (chess >= 225) { printf("game over,tie"); return 0; }
+
+		printf("please white play chess");
+		scanf_s("%d %d", &white[0], &white[1]);
+		if (arr[white[0]][white[1]] == 0)arr[white[0]][white[1]] = 'w';
+		else
+		{
+			printf("该处已有棋子\n");
+			printf("please white play chess");
+			scanf_s("%d %d", &white[0], &white[1]);
+			if (arr[white[0]][white[1]] == 0)arr[white[0]][white[1]] = 'w';
+			else 
+			{
+				printf("请遵守游戏规则\nblack win"); return 0;
+			}
+			chess++;
+		}
+
+		for (int i = 1; i < 16; i++)
+		{
+			for (int j = 1; j < 16; j++)
+				if (arr[i][j] == 'w')
+				{
+					for (n = 1, aim = 1; n == aim && j + n < 17 && n < 5; aim++)
+						if (arr[i][j + n] == 'w')n++;
+					if (n == aim) { printf("white win"); return 0; }
+
+					for (n = 1, aim = 1; n == aim && j + n < 17 && n < 5; aim++)
+						if (arr[i + n][j] == 'w')n++;
+					if (n == aim) { printf("white win"); return 0; }
+
+					for (n = 1, aim = 1; n == aim && i + n < 17 && n < 5; aim++)
+					{
+						if (arr[i + n][j + n] == 'w')n++;
+					}
+					if (n == aim) { printf("white win"); return 0; }
+
+				}
+
+		}
+
+	}
+}
