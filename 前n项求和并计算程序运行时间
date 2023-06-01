@@ -1,0 +1,35 @@
+#define _CRT_SECURE_NO_WARNINGS 1
+
+#include <stdio.h>
+#include <time.h>
+
+int method_1(int n)
+{
+	int all = 0;
+	for (int i = 1; i <= n; i++)
+		all += i;
+	return (all);
+}
+
+int method_2(int n)
+{
+	return (n * (n + 1) / 2);
+}
+
+int main()
+{
+	int n = 0;
+	clock_t time1, time2, time3;
+	double total_time_1 = 0, total_time_2 = 0;
+	scanf("%d", &n);
+	time1 = clock();
+	printf("all = %d\n", method_1(n));
+	time2 = clock();
+	printf("all = %d\n", method_2(n));
+	time3 = clock();
+	total_time_1 = (double)(time2 - time1) / CLOCKS_PER_SEC;
+	total_time_2 = (double)(time3 - time2) / CLOCKS_PER_SEC;
+	printf("方法一用时：%f s\n", total_time_1);
+	printf("方法二用时：%f s", total_time_2);
+	return 0;
+}
