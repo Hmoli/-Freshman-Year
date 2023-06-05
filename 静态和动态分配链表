@@ -1,0 +1,46 @@
+/*#include <stdio.h>
+
+#define maxsize 10000
+typedef struct
+{
+	int arr[maxsize];
+	int length;
+}SqList1;
+
+typedef struct
+{
+	int length;
+	int* arr;
+	int Maxsize;
+}SqList2;
+
+
+
+int getelem_1(int* arr[], int i)//静态分配，返回第i个元素
+{
+	return (arr[i - 1]);
+}
+
+int getelem_2(int* arr[], int i)//静态分配，返回下标为i的元素
+{
+	return (arr[i]);
+}
+
+int getelem_3(int* arr, int i)//动态分配，返回第i个元素
+{
+	int* q = arr;
+	return (*(q + i-1));
+}
+
+int getelem_4(int* arr, int i)//动态分配，返回下标为i的元素
+{
+	int* q = arr;
+	return (*(q + i));
+}
+
+int main()
+{
+	SqList1 L1;
+	SqList2 L2;
+	
+}
