@@ -1,0 +1,63 @@
+#include <stdio.h>
+int change(int* a, int* b)//交换两个数的顺序
+{
+	int x = *a;
+	int y = *b;
+	{
+		x = x + y;
+		y = x - y;
+		x = x - y;
+	}
+	*a = x;
+	*b = y;
+	return 0;
+}
+
+int paixu2(int maxsize, int* arr)//多个数从小到大排序
+{
+	int m, n;
+	for (m = 0; m < maxsize; m++)
+	{
+		for (n = m; n < maxsize; n++)
+			if (*(arr + m) > *(arr + n))
+				change((arr + m), (arr + n));
+	}
+	return 0;
+}
+int chachong(int* arr,int maxsize)
+{
+	int i;
+	for(i=0;i<maxsize;i++)
+		if (*(arr + i) == *(arr + i + 1))
+		{
+			while (*(arr + i) == *(arr + i + 1))
+				delete (arr + i + 1, &maxsize, i + 1);
+		}
+	return maxsize;
+}
+
+int delete(int* arr,int* maxsize,int n)
+{
+	int offquanlity = *maxsize - n - 1;
+	for (int i = 0; i < offquanlity; i++)
+		*(arr + i) = *(arr + i + 1);
+	*(arr+offquanlity) = 0;
+	(*maxsize)--;
+	return 0;
+}
+
+int main()
+{
+	int arr[10000] = { 0 };
+	int total = 0;
+	int maxsize = 10;
+	int i = 0;
+	scanf_s("%d", &total);
+	for (; i < total; i++)
+		scanf_s("%d", &arr[i]);
+	paixu2(total, &arr[0]);
+	maxsize = chachong(&arr[0], total);
+	printf("%d\n", maxsize);
+	for(i=0;i<maxsize;i++)
+		printf("%d ", arr[i]);
+}
